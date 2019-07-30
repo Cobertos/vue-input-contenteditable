@@ -1,13 +1,15 @@
-import { expect } from 'chai'
-import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import { expect } from 'chai';
+import { shallowMount } from '@vue/test-utils';
+import InputContentEditable from '@/input-contenteditable.vue';
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    })
-    expect(wrapper.text()).to.include(msg)
-  })
-})
+describe('input-contenteditable.vue', () => {
+  it('properly supports v-model', () => {
+    const wrapper = shallowMount(InputContentEditable, {
+      propsData: {
+        value: 'my value'
+      }
+    });
+    console.log(wrapper);
+    expect(wrapper.text()).to.include('my value');
+  });
+});
