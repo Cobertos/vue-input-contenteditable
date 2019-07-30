@@ -5,12 +5,12 @@
     @keydown="$emit('keydown', $event)"
     @keyup="$emit('keyup', $event)"
     @keypress="$emit('keypress', $event)"
-    ref="contenteditable"
-    v-text="value"></p>
+    ref="contenteditable"></p>
 </template>
 
 <script>
 export default {
+  name:'input-contenteditable',
   props: {
     placeholder: String,
     value: String,
@@ -21,9 +21,24 @@ export default {
   },
   data () {
     return {
-      lastValue: undefined,
-      lastOffset: undefined
+      lastText: undefined,
+      lastOffset: undefined,
+      valueSetter: '',
     };
+  },
+  mounted(){
+    this.$refs.contenteditable.innerText = this.value;
+  },
+  watch:{
+    value(){
+      if(this.value !== this.$refs.contenteditable.innerText) {
+        //Will reset cursor position, so only do this when the external component
+        //completely changes the value (so not something caused by emitting the input event
+        //and the reactivity framework)
+        //TODO: Get smarter about this?
+        this.$refs.contenteditable.innerText = this.value;
+      }
+    }
   },
   methods: {
     onInput (e) {
