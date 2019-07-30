@@ -4,37 +4,22 @@
     <a href="https://cobertos.com" target="_blank"><img alt="twitter" src="https://img.shields.io/badge/website-cobertos.com-888888.svg"></a>
 </p>
 
-# vue-contenteditable-input
+# input-contenteditable
 
-## Project setup
-```
-npm install
-```
+Vue component wrapping `contenteditable` with all the features you expect from `input[type='text']`.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Supports:
+ * v-model
+ * placeholder
+ * maxlength
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your tests
-```
-npm run test
-```
+### Developing
+#### Testing
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
 ```
 npm run test:unit
+npm run test:unit -- --watch
+npm run lint --no-fix
+...
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
