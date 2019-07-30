@@ -27,7 +27,7 @@ export default {
     };
   },
   mounted(){
-    this.$refs.contenteditable.innerText = this.value;
+    this.$refs.contenteditable.textContent = this.value;
   },
   watch:{
     value(){
@@ -36,13 +36,13 @@ export default {
         //completely changes the value (so not something caused by emitting the input event
         //and the reactivity framework)
         //TODO: Get smarter about this?
-        this.$refs.contenteditable.innerText = this.value;
+        this.$refs.contenteditable.textContent = this.value;
       }
     }
   },
   methods: {
     onInput (e) {
-      let text = this.$refs.contenteditable.innerText;
+      let text = this.$refs.contenteditable.textContent;
 
       //enforce a maxlength
       if (this.maxlength !== -1) {
@@ -53,7 +53,7 @@ export default {
           //We need to trim it down, so use the last valid text instead of trying to
           //figure out how to slice the current one
           text = this.lastText || text.slice(0,this.maxlength);
-          this.$refs.contenteditable.innerText = text; //Will reset the cursor to the front
+          this.$refs.contenteditable.textContent = text; //Will reset the cursor to the front
           selection.collapse(anchorNode, this.lastOffset); //Use the last valid offset too
           return;
         }
