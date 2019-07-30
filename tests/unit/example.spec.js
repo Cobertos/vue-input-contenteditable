@@ -43,4 +43,33 @@ describe('input-contenteditable.vue', () => {
       expect(wrapper.emitted().input[2][0]).to.equal('hi there');
     });
   });
+
+  it('supports placeholder', () => {
+    //arrange/act
+    const wrapper = shallowMount(InputContentEditable, {
+      propsData: {
+        placeholder: 'hewwo'
+      }
+    });
+    //assert
+    expect(wrapper.attributes('placeholder')).to.equal('hewwo');
+    //The actual attribute is displayed using css and &:before:empty
+    //and there's no easy way to test that
+  });
+
+  //TODO: window.getSelection() is not a function...
+  /*it('supports maxlength', () => {
+    //arrange
+    const wrapper = shallowMount(InputContentEditable, {
+      propsData: {
+        value: 'hewwohewwo',
+        maxlength: 10
+      }
+    });
+    //act
+    wrapper.element.textContent = 'hewwohewwohewwo';
+    wrapper.element.dispatchEvent(new Event('input')); 
+    //assert
+    expect(wrapper.text()).to.equal('hewwohewwo');
+  });*/
 });

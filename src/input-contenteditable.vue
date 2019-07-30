@@ -67,6 +67,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped="true">
+  [contenteditable] {
+    cursor: text;
+  }
 
+  [contenteditable]:empty:before {
+    content: attr(placeholder);
+    color: rgba(50,50,50,0.5);
+  }
 </style>

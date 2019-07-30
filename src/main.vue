@@ -1,5 +1,6 @@
 <template>
-    <input-contenteditable v-model="test" />
+    <input-contenteditable v-model="test"
+        :placeholder="'asdasd'"/>
 </template>
 
 <script>
@@ -11,7 +12,7 @@ export default {
     },
     data(){
         return {
-            test: 'aaa'
+            test: 'aaa',
         };
     }
 };
