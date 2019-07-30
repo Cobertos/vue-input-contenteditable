@@ -13,6 +13,14 @@ Supports:
  * placeholder
  * maxlength
 
+## Usage
+
+```
+<input-contenteditable
+    v-model="someModel"
+    :placeholder="myPlaceHolder"
+    :maxlength="22" />
+```
 
 ### Developing
 #### Testing

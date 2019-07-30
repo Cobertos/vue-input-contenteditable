@@ -1,7 +1,11 @@
 {
   "name": "vue-contenteditable-input",
+  "author": {
+    "name": "Cobertos / Peter",
+    "email": "me@cobertos.com",
+    "url": "http://cobertos.com"
+  },
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
