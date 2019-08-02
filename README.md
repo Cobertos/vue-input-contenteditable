@@ -24,12 +24,32 @@ Make beautiful inputs without the restrictions of `input[type='text']`. A Vue co
 
 ## Usage
 
+Below is an example of the component in use in a Single File Component. After importing it, make sure to add it to your components property and then it will be available in your template.
+
 ```
-<input-contenteditable
-    v-model="someModel"
-    :placeholder="myPlaceHolder"
-    :maxlength="22" />
+<template>
+    <input-contenteditable
+        v-model="myModel"
+        :placeholder="myPlaceHolder"
+        :maxlength="25" />
+</template>
+
+<script>
+import InputContenteditable from 'vue-input-contenteditable';
+
+export default {
+    components: {
+        'input-contenteditable': InputContenteditable
+    },
+    data: {
+        myModel: '',
+        myPlaceholder: 'Type your data here...'
+    }
+};
+</script>
 ```
+
+This uses the [standard `@vue/cli` export recommendations](https://vuejs.org/v2/cookbook/packaging-sfc-for-npm.html). You can import the source `.vue` component directly by importing `vue-input-contenteditable/sfc` or use the component from a script tag with unpkg. 
 
 ### Developing
 #### Testing
