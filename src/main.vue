@@ -7,13 +7,13 @@
 import InputContentEditable from './input-contenteditable.vue';
 
 export default {
-    components: {
-        [InputContentEditable.name]: InputContentEditable
-    },
-    data(){
-        return {
-            test: 'aaa',
-        };
-    }
+  components: {
+    [InputContentEditable.name]: InputContentEditable
+  },
+  data () {
+    return {
+      test: 'aaa'
+    };
+  }
 };
 </script>
