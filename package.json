@@ -12,14 +12,17 @@
     "email": "me+npm@cobertos.com",
     "url": "http://cobertos.com"
   },
-  "version": "0.1.0",
+  "version": "0.1.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cobertos/vue-contenteditable-input"
+  },
   "scripts": {
     "serve": "vue-cli-service serve tests/dev/main.vue",
     "build": "vue-cli-service build --target lib src/wrapper.js",
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
-    "publish": "mv README.md tmp.README.md && mv npm.README.md README.md && npm publish && mv README.md npm.README.md && mv tmp.README.md README.md"
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "core-js": "^2.6.5",

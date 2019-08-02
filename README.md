@@ -8,7 +8,7 @@
 # vue-input-contenteditable
 
 <p align="center">
-    <img src="./media/vue-input-contenteditable.gif">
+    <img src="https://github.com/Cobertos/vue-contenteditable-input/blob/master/media/vue-input-contenteditable.gif?raw=true">
 </p>
 
 Make beautiful inputs without the restrictions of `input[type='text']`. A Vue component wrapper for `contenteditable` with all the features you expect:
