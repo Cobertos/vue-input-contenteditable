@@ -4,7 +4,7 @@
     <a href="https://cobertos.com" target="_blank"><img alt="twitter" src="https://img.shields.io/badge/website-cobertos.com-888888.svg"></a>
 </p>
 
-# input-contenteditable
+# vue-input-contenteditable
 
 Vue component wrapping `contenteditable` with all the features you expect from `input[type='text']`.
 
