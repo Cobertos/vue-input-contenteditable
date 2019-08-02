@@ -17,6 +17,10 @@ Make beautiful inputs without the restrictions of `input[type='text']`. A Vue co
  * maxlength
 
 
+## Installation
+
+`npm i vue-input-contenteditable`
+
 ## Usage
 
 ```
@@ -30,8 +34,16 @@ Make beautiful inputs without the restrictions of `input[type='text']`. A Vue co
 #### Testing
 
 ```
+npm run serve #Runs tests/dev/main.js
 npm run test:unit
 npm run test:unit -- --watch
-npm run lint --no-fix
+npm run lint
 ...
+```
+
+#### Releasing
+
+```
+npm run build
+npm publish
 ```
