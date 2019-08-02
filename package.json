@@ -1,5 +1,6 @@
 {
   "name": "vue-input-contenteditable",
+  "description": "A Vue wrapper around contenteditable to make beautiful inputs free from styling restrictions",
   "main": "dist/vue-input-contenteditable.umd.js",
   "module": "dist/vue-input-contenteditable.common.js",
   "unpkg": "dist/vue-input-contenteditable.umd.min.js",
@@ -17,7 +18,8 @@
     "build": "vue-cli-service build --target lib src/wrapper.js",
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "publish": "mv README.md tmp.README.md && mv npm.README.md README.md && npm publish && mv README.md npm.README.md && mv tmp.README.md README.md"
   },
   "dependencies": {
     "core-js": "^2.6.5",
