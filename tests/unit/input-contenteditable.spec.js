@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
-import InputContentEditable from '@/input-contenteditable.vue';
+import InputContenteditable from '@/input-contenteditable.vue';
 //eslint-disable-next-line no-eval
 eval(`require('jsdom-global')();`); //Don't let webpack transpile this require, don't bundle jsdom with the tests
 //Polyfill a few things in window.getSelection() bc jsdom doesn't support yet
@@ -19,7 +19,7 @@ global.window.getSelection = () => {
 describe('input-contenteditable.vue', () => {
   it('has one root element that is contenteditable', () => {
     //arrange/act
-    const wrapper = shallowMount(InputContentEditable, {});
+    const wrapper = shallowMount(InputContenteditable, {});
     //assert
     expect(wrapper.element.children.length).to.equal(0);
     expect(wrapper.attributes('contenteditable')).to.not.equal(undefined);
@@ -28,7 +28,7 @@ describe('input-contenteditable.vue', () => {
   describe('supports v-model', () => {
     it('supports passing a value', () => {
       //arrange/act
-      const wrapper = shallowMount(InputContentEditable, {
+      const wrapper = shallowMount(InputContenteditable, {
         propsData: {
           value: 'my value'
         }
@@ -38,7 +38,7 @@ describe('input-contenteditable.vue', () => {
     });
     it('emits an input event on change', () => {
       //arrange
-      const wrapper = shallowMount(InputContentEditable, {});
+      const wrapper = shallowMount(InputContenteditable, {});
       //act
       wrapper.element.textContent = 'h';
       //Simulate native DOM event for user typing in contentediable
@@ -60,7 +60,7 @@ describe('input-contenteditable.vue', () => {
 
   it('supports placeholder', () => {
     //arrange/act
-    const wrapper = shallowMount(InputContentEditable, {
+    const wrapper = shallowMount(InputContenteditable, {
       propsData: {
         placeholder: 'hewwo'
       }
@@ -74,7 +74,7 @@ describe('input-contenteditable.vue', () => {
   describe('supports maxlength', () => {
     it('when a single letter is added to the end (simple case)', () => {
       //arrange
-      const wrapper = shallowMount(InputContentEditable, {
+      const wrapper = shallowMount(InputContenteditable, {
         propsData: {
           value: 'hewwohewwo',
           maxlength: 10
@@ -89,7 +89,7 @@ describe('input-contenteditable.vue', () => {
     });
     it('when 4 letters are pasted in the middle (complex case) and sets cursor properly', () => {
       //arrange
-      const wrapper = shallowMount(InputContentEditable, {
+      const wrapper = shallowMount(InputContenteditable, {
         propsData: {
           value: 'hewwohewwo',
           maxlength: 12
