@@ -12,7 +12,7 @@
     "email": "me+npm@cobertos.com",
     "url": "http://cobertos.com"
   },
-  "version": "0.1.4",
+  "version": "0.1.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/Cobertos/vue-input-contenteditable"
