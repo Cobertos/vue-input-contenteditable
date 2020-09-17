@@ -1,0 +1,33 @@
+name: Package Tests
+
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        node-version: ['10.x', '12.x', '14.x']
+
+    steps:
+      # Checkout repo @ latest release
+      - uses: actions/checkout@v2
+      # Install languages
+      - name: Set up Nodejs ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      # Install dependencies
+      - name: npm ci
+        run: npm ci
+      - name: Test with vue-cli-service
+        run: |
+          npm run test:unit

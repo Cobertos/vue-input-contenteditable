@@ -55,21 +55,3 @@ This uses the [standard `@vue/cli` export recommendations](https://vuejs.org/v2/
 ## For Enterprise
 
 The maintainers of thousands of packages (including me! :3) are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-vue-input-contenteditable?utm_source=npm-vue-input-contenteditable&utm_medium=referral&utm_campaign=readme)
-
-## Developing
-#### Testing
-
-```
-npm run serve #Runs tests/dev/main.js
-npm run test:unit
-npm run test:unit -- --watch
-npm run lint
-...
-```
-
-#### Releasing
-
-```
-npm run build
-npm publish
-```
