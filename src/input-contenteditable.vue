@@ -1,20 +1,25 @@
 <template>
-  <p contenteditable
+  <component
+    :is="is"
+    contenteditable
     :placeholder="placeholder"
     @input='onInput'
     ref='contenteditable'
 
     @keydown="$emit('keydown', $event)"
     @keyup="$emit('keyup', $event)"
-    @keypress="$emit('keypress', $event)"></p>
+    @keypress="$emit('keypress', $event)"
+  />
 </template>
 
 <script>
-import Vue from 'vue';
-
 export default {
   name: 'input-contenteditable',
   props: {
+    is: {
+      type: String,
+      default: 'p'
+    },
     placeholder: String,
     value: String,
     maxlength: {
@@ -69,9 +74,9 @@ export default {
               //Map them all to their length
               .map(n => n.textContent.length)
               //Sum them together
-              .reduce((acc, itm) => acc + itm, 0)
+              .reduce((acc, itm) => acc + itm, 0) +
               //And then add the final offset in the final node
-              + anchorOffset);
+              anchorOffset);
 
           //Use either the lastText if exists, or the current text but trimmed
           const newTextToSet = this.lastText || text.slice(0,this.maxlength);
@@ -94,8 +99,7 @@ export default {
           selection.collapse(this.$refs.contenteditable.childNodes[0], newOffsetToSet);
           this.lastText = newTextToSet;
           return;
-        }
-        else {
+        } else {
           this.lastText = text;
         }
       }

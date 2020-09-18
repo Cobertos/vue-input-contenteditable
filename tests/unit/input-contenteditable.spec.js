@@ -71,6 +71,28 @@ describe('input-contenteditable.vue', () => {
     //and there's no easy way to test that
   });
 
+  describe('supports is', () => {
+    it('is default is p', () => {
+      //arrange/act
+      const wrapper = shallowMount(InputContenteditable);
+
+      //assert
+      expect(wrapper.element.tagName).to.equal('P');
+    });
+
+    it('is can also be passed in', () => {
+      //arrange/act
+      const wrapper = shallowMount(InputContenteditable, {
+        propsData: {
+          is: 'a'
+        }
+      });
+
+      //assert
+      expect(wrapper.element.tagName).to.equal('A');
+    });
+  });
+
   describe('supports maxlength', () => {
     it('when a single letter is added to the end (simple case)', () => {
       //arrange
