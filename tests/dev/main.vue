@@ -2,7 +2,8 @@
   <div class="wrap">
     ajsiod
     <input-contenteditable v-model="test"
-      :placeholder="'asdasd'"/>
+      :placeholder="'asdasd'"
+      :maxlength="25"/>
   </div>
 </template>
 

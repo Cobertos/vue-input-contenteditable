@@ -18,7 +18,7 @@
     "url": "https://github.com/Cobertos/vue-input-contenteditable"
   },
   "scripts": {
-    "serve": "vue-cli-service serve tests/dev/main.vue",
+    "serve": "vue-cli-service serve tests/dev/main.js",
     "build": "vue-cli-service build --target lib src/wrapper.js",
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",

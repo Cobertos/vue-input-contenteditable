@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 export default {
   name: 'input-contenteditable',
   props: {
@@ -22,9 +24,7 @@ export default {
   },
   data () {
     return {
-      lastText: undefined,
-      lastOffset: undefined,
-      valueSetter: ''
+      lastText: this.value //Initally set to value if exists
     };
   },
   mounted () {
@@ -42,7 +42,7 @@ export default {
     }
   },
   methods: {
-    onInput (e) {
+    async onInput (e) {
       let text = this.$refs.contenteditable.textContent;
 
       //enforce a maxlength
@@ -53,22 +53,51 @@ export default {
         //
         //Instead, retroactively trimming the string after 'input' and setting the cursor properly
         //(as changing the text string will change the cursor in some browsers... :( ) is a better bet
-        //IMO. This worked fine on Chrome, FF, iOS, and Android in the original project but may break
-        //_somewhere_
+        //IMO. Current method was tested in Chrome, FF, and Android
 
         let selection = window.getSelection();
         let { anchorNode, anchorOffset } = selection;
-        anchorOffset = Math.min(anchorOffset, this.maxlength); //Make sure it is always in the range
         if (text.length > this.maxlength) {
-          //We need to trim it down, so use the last valid text instead of trying to
-          //figure out how to slice the current one
-          text = this.lastText || text.slice(0,this.maxlength);
-          this.$refs.contenteditable.textContent = text; //Will reset the cursor to the front
-          selection.collapse(anchorNode, this.lastOffset); //Use the last valid offset too
+          //Find the cursor position inside the contenteditable. Can't use anchorOffset
+          //because Firefox will add multiple text nodes when pasting sometimes
+          //(and then collapse them later? it's kind of weird...)
+          const textNodes = Array.from(this.$refs.contenteditable.childNodes);
+          const realAnchorOffset = textNodes.length <= 1 ? anchorOffset : (
+            textNodes
+              //Collect all nodes up to, but not including, anchorNode
+              .slice(0, textNodes.indexOf(anchorNode))
+              //Map them all to their length
+              .map(n => n.textContent.length)
+              //Sum them together
+              .reduce((acc, itm) => acc + itm, 0)
+              //And then add the final offset in the final node
+              + anchorOffset);
+
+          //Use either the lastText if exists, or the current text but trimmed
+          const newTextToSet = this.lastText || text.slice(0,this.maxlength);
+
+          //Find the last position of the cursor before the input event. Use the
+          //current cursor position, and remove the difference between the untrimmed text
+          //and the trimmed text (to back the cursor up to the position the
+          //input event happened at)
+          //We can't use anchorOffset because FF likes to make new text nodes
+          //for pasted text for some reason??
+          let newOffsetToSet = realAnchorOffset - (text.length - newTextToSet.length);
+          newOffsetToSet = Math.min(newOffsetToSet, this.maxlength); // Make sure not over maxlength
+          //console.log(realAnchorOffset, anchorOffset, text.length, newTextToSet.length, this.$refs.contenteditable.childNodes.length);
+
+          //This will reset the cursor to the start of the contenteditable _and_
+          //make a new text node (so don't use anchorNode for selection.collapse())
+          this.$refs.contenteditable.textContent = newTextToSet;
+
+          //Set selection using last valid offset
+          selection.collapse(this.$refs.contenteditable.childNodes[0], newOffsetToSet);
+          this.lastText = newTextToSet;
           return;
         }
-        this.lastText = text;
-        this.lastOffset = anchorOffset;
+        else {
+          this.lastText = text;
+        }
       }
 
       this.$emit('input', text);

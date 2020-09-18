@@ -95,14 +95,14 @@ describe('input-contenteditable.vue', () => {
           maxlength: 12
         }
       });
-      selection.anchorNode = wrapper.element;
+      selection.anchorNode = wrapper.element.childNodes[0];
       selection.anchorOffset = 5;
       wrapper.element.dispatchEvent(new Event('input')); //Simulate cursor half way
 
       //act
-      wrapper.element.textContent = 'hewwoaaaahewwoh';
-      selection.anchorNode = wrapper.element;
-      selection.anchorOffset = 9; //Simulate pasting 4 a's half way between
+      wrapper.element.textContent = 'hewwoaaaahewwo';
+      selection.anchorNode = wrapper.element.childNodes[0];
+      selection.anchorOffset = 9; //Simulate pasting 4 a's half way between by manually moving cursor
       wrapper.element.dispatchEvent(new Event('input'));
       //assert
       //Expected behavior is basically to prevent the operation that just happened
