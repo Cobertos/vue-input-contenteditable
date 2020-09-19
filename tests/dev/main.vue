@@ -2,8 +2,11 @@
   <div class="wrap">
     ajsiod
     <input-contenteditable v-model="test"
+      :_is="tag"
       :placeholder="'asdasd'"
       :maxlength="25"/>
+    <button
+      @click="tag='a'">Test</button>
   </div>
 </template>
 
@@ -16,6 +19,7 @@ export default {
   },
   data () {
     return {
+      tag: 'p',
       test: 'aaa'
     };
   }

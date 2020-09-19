@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="is"
+    :is="_is"
     contenteditable
     :placeholder="placeholder"
     @input='onInput'
@@ -16,7 +16,7 @@
 export default {
   name: 'input-contenteditable',
   props: {
-    is: {
+    _is: {
       type: String,
       default: 'p'
     },

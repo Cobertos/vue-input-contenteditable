@@ -71,8 +71,8 @@ describe('input-contenteditable.vue', () => {
     //and there's no easy way to test that
   });
 
-  describe('supports is', () => {
-    it('is default is p', () => {
+  describe('supports _is', () => {
+    it('_is default is p', () => {
       //arrange/act
       const wrapper = shallowMount(InputContenteditable);
 
@@ -80,11 +80,11 @@ describe('input-contenteditable.vue', () => {
       expect(wrapper.element.tagName).to.equal('P');
     });
 
-    it('is can also be passed in', () => {
+    it('_is can also be passed in', () => {
       //arrange/act
       const wrapper = shallowMount(InputContenteditable, {
         propsData: {
-          is: 'a'
+          _is: 'a'
         }
       });
 

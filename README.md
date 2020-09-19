@@ -31,7 +31,7 @@ Below is an example of the component in use in a Single File Component. After im
 <template>
     <input-contenteditable
         v-model="myModel"
-        is="p"
+        _is="p"
         :placeholder="myPlaceHolder"
         :maxlength="25" />
 </template>
